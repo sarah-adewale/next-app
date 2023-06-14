@@ -1,30 +1,8 @@
-import Image from 'next/image'
-import Link from 'next/link';
+
+import CatEvent from '../../../src/components/events/catEvent';
 
 
-const EventsCatPage = ( {data, pageName} ) => {
-    // let modPageName = pageName.slice(0)
-    // modPageName = modPageName.charAt(0).toUpperCase() + modPageName.slice(1)
-
-    // or
-
-    let modPageName = pageName.slice(0)
-    modPageName = modPageName.split('')[0].toUpperCase() + modPageName.slice(1)
-    return (
-        <div>
-            <h1>Events in {modPageName}</h1>
-            <div>
-                {data.map((ev) => (
-                    <Link key={ev.id} href={`/events/${ev.city}/${ev.id}`} passHref>
-                         <Image src={ev.image} alt={ev.title} width={200} height={100}/> <h2>{ev.title}</h2><p>{ev.description}</p>
-                    </Link>
-                ))}
-                
-            </div>
-        </div>
-        
-    )
-}
+const EventsCatPage = ({data, pageName}) => <CatEvent data={data} pageName={pageName}/>
 
 export default EventsCatPage; 
 
